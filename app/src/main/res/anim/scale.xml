@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+    scale 의 주요 속성
+
+    fromXScale : X 축의 시작 길이
+    fromYScale : Y 축의 시작 길이
+    toXScale : 확장할 X 축 길이
+    toYScale : 확장할 Y 축 길이
+    duration : 애니메이션의 동작하는 시간(1/1000 단위)
+    fillAfter : 고정(true)할지 안할지(false)
+                true : 애니메이션의 종료위치에 고정
+                false : 원래위치로 복귀 ( default : false)
+-->
+
+<scale
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:fromXScale="100dp"
+    android:fromYScale="100dp"
+    android:toXScale="300dp"
+    android:toYScale="300dp"
+    android:duration="3000"
+    android:fillAfter="true"
+    >
+</scale>
