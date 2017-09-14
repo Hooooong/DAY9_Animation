@@ -5,8 +5,9 @@ Android Programing
 ###### 예제
 ____________________________________________________
 
-  - [Button Animation 예제]()
-  - [SpreadCubes 예제]()
+  - [Button Animation 예제(View 적용)](https://github.com/Hooooong/DAY9_Animation/blob/master/app/src/main/java/hooooong/com/animation/MainActivity.java)
+  - [Button Animation 예제(Property 적용)](https://github.com/Hooooong/DAY9_Animation/blob/master/app/src/main/java/hooooong/com/animation/PropAniActivity.java)
+  - [SpreadCubes 예제](https://github.com/Hooooong/DAY9_SpreadCubes)
 
 ###### 공부정리
 ____________________________________________________
