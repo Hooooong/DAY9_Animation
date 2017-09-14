@@ -71,6 +71,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Animation animation = AnimationUtils.loadAnimation(this, R.anim.move);
         // 3. 로드된 애니메이션을 실제 위젯에 적용한다.
         btnObject.startAnimation(animation);
+
+        // OR
+
+        // 1. Animation 객체 생성
+        // Animation 객체는
+        // AlphaAnimation, TranslateAnimation, RotateAnimation, ScaleAnimation 이 있다.
+        //Animation animation = new AlphaAnimation(0.1F, 0.1F);
+        // 2. Animation 속성 정의
+        //animation.setDuration(3000);
+        // 3. 애니메이션을 실제 위젯에 적용한다.
+        //btnObject.startAnimation(animation);
     }
 
     private void rotate() {

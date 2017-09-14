@@ -16,17 +16,17 @@ ____________________________________________________
 
     > 안드로이드는 View 의 간단한 변형에 관련된 애니메이션 처리를 지원한다. 위치 이동, 회전, 크기 변환, 투명도 변환이 있다.
 
-    1. View
+    1. View Animation
 
         >  View 자체가 이동하는것이 아니라 애니메이션을 적용한 View는 그대로 있고, 보이는 화면에서만 이동을 한다.( 예를 들면 버튼의 이미지는 이동하지만 클릭은 이동하기 전 영역에서 할 수 있다.)
 
-    2. Property
+    2. Property Animation
 
         > View 자체가 이동한다.
 
   - Animation 사용 방법
 
-    - View 적용 방법
+    - View Animation 적용 방법
 
         ```java
         // Animation 객체를 사용
@@ -50,7 +50,7 @@ ____________________________________________________
         View객체.startAnimation(animation);
         ```
 
-    - Property 적용 방법
+    - Property Animation 적용 방법
 
         ```java
         // Animator 객체를 사용
@@ -75,6 +75,12 @@ ____________________________________________________
                 0F, 360F            // 다. 속성에 대한 값 ( 위치일 경우는 거리가 된다 )
         );
 
+        //OR
+
+        // 1. 애니메이션 XML(anim 이 아닌 animator resource) 정의
+        // 2. AnimatorInflater.loadAnimator 로 정의된 애니메이션을 로드
+        ObjectAnimator aniXML = (ObjectAnimator) AnimatorInflater.loadAnimator(this, R.animator.move);
+
         //3. 애니메이터를 실행한다.( 복합 애니메이션은 AnimatorSet 에 넣어서 한다. )
         AnimatorSet animatorSet = new AnimatorSet();
         animatorSet.playTogether(aniX, aniY);       // set 에 넣어 동시에 실행하게 한다.
@@ -96,132 +102,138 @@ ____________________________________________________
 
   - Animation 종류
 
-    - __MOVE__
+    - anim 작성
 
-        - View 의 대상을 움직이는 애니메이션
+      - __MOVE__
 
-        - XML 코드
+          - View 의 대상을 움직이는 애니메이션
 
-            ```xml
-            <?xml version="1.0" encoding="utf-8"?>
-            <!--
-                translate 의 주요 속성
+          - XML 코드
 
-                formXDelta : X 좌표의 시작 위치
-                formYDelta : Y 좌표의 시작 위치 ( 양수이면 y는 -로 이동한다. )
-                toXDelta : 이동할 X 좌표 위치
-                toYDelta : 이동할 Y 좌표 위치 ( 양수이면 y는 -로 이동한다. )
-                duration : 애니메이션의 동작하는 시간(1/1000 단위)
-                fillAfter : 고정(true)할지 안할지(false)
-                            true : 애니메이션의 종료위치에 고정
-                            false : 원래위치로 복귀 ( default : false)
-            -->
-            <translate
-                xmlns:android="http://schemas.android.com/apk/res/android"
-                android:fromXDelta="0"
-                android:fromYDelta="0"
-                android:toXDelta="100"
-                android:toYDelta="300"
-                android:duration="3000"
-                android:fillAfter="true"
-                >
-            </translate>            
-            ```
+              ```xml
+              <?xml version="1.0" encoding="utf-8"?>
+              <!--
+                  translate 의 주요 속성
 
-    - __ROTATE__
+                  formXDelta : X 좌표의 시작 위치
+                  formYDelta : Y 좌표의 시작 위치 ( 양수이면 y는 -로 이동한다. )
+                  toXDelta : 이동할 X 좌표 위치
+                  toYDelta : 이동할 Y 좌표 위치 ( 양수이면 y는 -로 이동한다. )
+                  duration : 애니메이션의 동작하는 시간(1/1000 단위)
+                  fillAfter : 고정(true)할지 안할지(false)
+                              true : 애니메이션의 종료위치에 고정
+                              false : 원래위치로 복귀 ( default : false)
+              -->
+              <translate
+                  xmlns:android="http://schemas.android.com/apk/res/android"
+                  android:fromXDelta="0"
+                  android:fromYDelta="0"
+                  android:toXDelta="100"
+                  android:toYDelta="300"
+                  android:duration="3000"
+                  android:fillAfter="true"
+                  >
+              </translate>            
+              ```
 
-        - View 의 대상을 회전하는 애니메이션
+      - __ROTATE__
 
-        - XML 코드
+          - View 의 대상을 회전하는 애니메이션
 
-            ```XML
-            <?xml version="1.0" encoding="utf-8"?>
-            <!--
-                rotate 의 주요 속성
+          - XML 코드
 
-                fromDegrees : X 좌표의 시작 위치
-                toDegrees : Y 좌표의 시작 위치 ( 양수이면 y는 -로 이동한다. )
+              ```XML
+              <?xml version="1.0" encoding="utf-8"?>
+              <!--
+                  rotate 의 주요 속성
 
-                pivotX : 회전할 기준의 X 좌표 ( % 로 )
-                pivotY : 회전할 기준의 Y 좌표 ( % 로 )
+                  fromDegrees : X 좌표의 시작 위치
+                  toDegrees : Y 좌표의 시작 위치 ( 양수이면 y는 -로 이동한다. )
 
-                duration : 애니메이션의 동작하는 시간(1/1000 단위)
-                fillAfter : 고정(true)할지 안할지(false)
-                            true : 애니메이션의 종료위치에 고정
-                            false : 원래위치로 복귀 ( default : false)
-            -->
-            <rotate
-                xmlns:android="http://schemas.android.com/apk/res/android"
-                android:fromDegrees="0"
-                android:toDegrees="270"
+                  pivotX : 회전할 기준의 X 좌표 ( % 로 )
+                  pivotY : 회전할 기준의 Y 좌표 ( % 로 )
 
-                android:pivotX="50%"
-                android:pivotY="50%"
+                  duration : 애니메이션의 동작하는 시간(1/1000 단위)
+                  fillAfter : 고정(true)할지 안할지(false)
+                              true : 애니메이션의 종료위치에 고정
+                              false : 원래위치로 복귀 ( default : false)
+              -->
+              <rotate
+                  xmlns:android="http://schemas.android.com/apk/res/android"
+                  android:fromDegrees="0"
+                  android:toDegrees="270"
 
-                android:duration="3000"
-                android:fillAfter="true"
-                >
-            </rotate>
-            ```
+                  android:pivotX="50%"
+                  android:pivotY="50%"
 
-    - __SCALE__
+                  android:duration="3000"
+                  android:fillAfter="true"
+                  >
+              </rotate>
+              ```
 
-        - View 의 대상을 확장하는 애니메이션
+      - __SCALE__
 
-        - XML 코드
+          - View 의 대상을 확장하는 애니메이션
 
-            ```XML
-            <?xml version="1.0" encoding="utf-8"?>
+          - XML 코드
 
-            <!--
-                scale 의 주요 속성
+              ```XML
+              <?xml version="1.0" encoding="utf-8"?>
 
-                fromXScale : X 축의 시작 길이
-                fromYScale : Y 축의 시작 길이
-                toXScale : 확장할 X 축 길이
-                toYScale : 확장할 Y 축 길이
-                duration : 애니메이션의 동작하는 시간(1/1000 단위)
-                fillAfter : 고정(true)할지 안할지(false)
-                            true : 애니메이션의 종료위치에 고정
-                            false : 원래위치로 복귀 ( default : false)
-            -->
+              <!--
+                  scale 의 주요 속성
 
-            <scale
-                xmlns:android="http://schemas.android.com/apk/res/android"
-                android:fromXScale="100dp"
-                android:fromYScale="100dp"
-                android:toXScale="300dp"
-                android:toYScale="300dp"
-                android:duration="3000"
-                android:fillAfter="true"
-                >
-            </scale>            
-            ```
+                  fromXScale : X 축의 시작 길이
+                  fromYScale : Y 축의 시작 길이
+                  toXScale : 확장할 X 축 길이
+                  toYScale : 확장할 Y 축 길이
+                  duration : 애니메이션의 동작하는 시간(1/1000 단위)
+                  fillAfter : 고정(true)할지 안할지(false)
+                              true : 애니메이션의 종료위치에 고정
+                              false : 원래위치로 복귀 ( default : false)
+              -->
 
-    - __ALPHA__
+              <scale
+                  xmlns:android="http://schemas.android.com/apk/res/android"
+                  android:fromXScale="100dp"
+                  android:fromYScale="100dp"
+                  android:toXScale="300dp"
+                  android:toYScale="300dp"
+                  android:duration="3000"
+                  android:fillAfter="true"
+                  >
+              </scale>            
+              ```
 
-        - View 의 대상의 투명도를 조절하는 애니메이션
+      - __ALPHA__
 
-        - XML 코드
+          - View 의 대상의 투명도를 조절하는 애니메이션
 
-            ```XML
-            <?xml version="1.0" encoding="utf-8"?>
-            <!--
-                scale 의 주요 속성
+          - XML 코드
 
-                fromAlpha : 투명도 시작값 (0.0 ~ 1.0)
-                toAlpha : 투명도 종료값 (0.0 ~ 1.0)
-                duration : 애니메이션의 동작하는 시간(1/1000 단위)
-                fillAfter : 고정(true)할지 안할지(false)
-                            true : 애니메이션의 종료위치에 고정
-                            false : 원래위치로 복귀 ( default : false)
-            -->
-            <alpha
-                xmlns:android="http://schemas.android.com/apk/res/android"
-                android:fromAlpha="0.0"
-                android:toAlpha="1.0"
-                android:duration="3000"
-                android:fillAfter="true"
-                >
-            </alpha>            
-            ```
+              ```XML
+              <?xml version="1.0" encoding="utf-8"?>
+              <!--
+                  scale 의 주요 속성
+
+                  fromAlpha : 투명도 시작값 (0.0 ~ 1.0)
+                  toAlpha : 투명도 종료값 (0.0 ~ 1.0)
+                  duration : 애니메이션의 동작하는 시간(1/1000 단위)
+                  fillAfter : 고정(true)할지 안할지(false)
+                              true : 애니메이션의 종료위치에 고정
+                              false : 원래위치로 복귀 ( default : false)
+              -->
+              <alpha
+                  xmlns:android="http://schemas.android.com/apk/res/android"
+                  android:fromAlpha="0.0"
+                  android:toAlpha="1.0"
+                  android:duration="3000"
+                  android:fillAfter="true"
+                  >
+              </alpha>            
+              ```
+
+    - animator 작성
+
+      - [animator.xml 작성법](https://developer.android.com/guide/topics/resources/animation-resource.html)

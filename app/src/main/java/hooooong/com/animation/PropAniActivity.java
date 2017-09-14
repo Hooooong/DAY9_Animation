@@ -54,6 +54,12 @@ public class PropAniActivity extends AppCompatActivity {
                 0F, 360F            // 다. 속성에 대한 값 ( 위치일 경우는 거리가 된다 )
         );
 
+        //OR
+
+        // 1. 애니메이션 XML(anim 이 아닌 animator resource) 정의
+        // 2. AnimatorInflater.loadAnimator 로 정의된 애니메이션을 로드
+        //ObjectAnimator animator = (ObjectAnimator) AnimatorInflater.loadAnimator(this, R.animator.move);
+
         //3. 애니메이터를 실행한다.( 복합 애니메이션은 AnimatorSet 에 넣어서 한다. )
         AnimatorSet animatorSet = new AnimatorSet();
         animatorSet.playTogether(aniX, aniY);       // set 에 넣어 동시에 실행하게 한다.
