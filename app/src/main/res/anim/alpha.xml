@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-    scale 의 주요 속성
+    alpha 의 주요 속성
 
     fromAlpha : 투명도 시작값 (0.0 ~ 1.0)
     toAlpha : 투명도 종료값 (0.0 ~ 1.0)

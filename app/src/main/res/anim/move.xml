@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-    translate 의 주요 속성
+    move(translate) 의 주요 속성
 
     formXDelta : X 좌표의 시작 위치
     formYDelta : Y 좌표의 시작 위치 ( 양수이면 y는 -로 이동한다. )
