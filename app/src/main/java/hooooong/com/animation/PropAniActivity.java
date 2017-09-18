@@ -1,5 +1,6 @@
 package hooooong.com.animation;
 
+import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.content.Intent;
@@ -79,8 +80,11 @@ public class PropAniActivity extends AppCompatActivity {
         // 연속적으로 애니메이션을 실행시키기 위한 메소드
         // AnimatorSet 객체.playSequentially(Animator 객체, Animator 객체);
 
+        // AnimationSet 시작
+        animatorSet.start();
+
         // 애니메이션의 각종 상태를 확인할 수 있는 리스너
-        /*animatorSet.addListener(new Animator.AnimatorListener() {
+        animatorSet.addListener(new Animator.AnimatorListener() {
             @Override
             public void onAnimationStart(Animator animator) {
                 // 애니메이션 시작시
@@ -100,12 +104,7 @@ public class PropAniActivity extends AppCompatActivity {
             public void onAnimationRepeat(Animator animator) {
                 // 애니메이션 반복시
             }
-        });*/
-
-        // AnimationSet 시작
-        animatorSet.start();
-
-
+        });
     }
 
     public void goJoystick(View view){
