@@ -132,7 +132,7 @@ ____________________________________________________
 
 - Animation 종류
 
-  ![폴더 구조]()
+  ![폴더 구조](https://github.com/Hooooong/DAY9_Animation/blob/master/image/%ED%8F%B4%EB%8D%94%EA%B5%AC%EC%A1%B0.PNG)
 
   - anim 작성
 
