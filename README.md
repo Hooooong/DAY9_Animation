@@ -268,4 +268,33 @@ ____________________________________________________
 
   - animator 작성
 
+    ```xml
+    <set
+      android:ordering=["together" | "sequentially"]>
+
+        <objectAnimator
+            android:propertyName="string"
+            android:duration="int"
+            android:valueFrom="float | int | color"
+            android:valueTo="float | int | color"
+            android:startOffset="int"
+            android:repeatCount="int"
+            android:repeatMode=["repeat" | "reverse"]
+            android:valueType=["intType" | "floatType"]/>
+
+        <animator
+            android:duration="int"
+            android:valueFrom="float | int | color"
+            android:valueTo="float | int | color"
+            android:startOffset="int"
+            android:repeatCount="int"
+            android:repeatMode=["repeat" | "reverse"]
+            android:valueType=["intType" | "floatType"]/>
+
+        <set>
+            ...
+        </set>
+    </set>
+    ```
+
     - [animator.xml 작성법](https://developer.android.com/guide/topics/resources/animation-resource.html)
