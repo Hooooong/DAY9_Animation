@@ -63,7 +63,10 @@ public class PropAniActivity extends AppCompatActivity {
 
         //3. 애니메이터를 실행한다.( 복합 애니메이션은 AnimatorSet 에 넣어서 한다. )
         AnimatorSet animatorSet = new AnimatorSet();
+
         animatorSet.playTogether(aniX, aniY);       // set 에 넣어 동시에 실행하게 한다.
+
+        animatorSet.playSequentially(aniX, aniY);   // set 에 넣어 순차적으로 실행하게 한다. aniX 를 완료한 후 aniY를 실행
         animatorSet.setDuration(3000);              // 속성도 추가할 수 있다.
 
         // Interpolator : 가속도 개념
